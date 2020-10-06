@@ -4,17 +4,6 @@ $(document).ready(function () {
   var currentTime = moment().format("HH");
   var testTime = "13";
   console.log(currentTime);
-  //   var timeValues = [
-  //     "9AM",
-  //     "10AM",
-  //     "11AM",
-  //     "12PM",
-  //     "1PM",
-  //     "2PM",
-  //     "3PM",
-  //     "4PM",
-  //     "5PM",
-  //   ];
   var timeValuesObj = [
     {
       display: "2AM",
@@ -59,39 +48,43 @@ $(document).ready(function () {
   ];
 
   for (var i = 0; i < timeValuesObj.length; i++) {
+    var row = $("<div>");
     var hour = $("<div>");
-    var timeBlock = $("<div>");
+    var description = $("<textarea>");
     var saveBtn = $("<button>");
-    hour.addClass("hour");
-    timeBlock.addClass("time-block");
-    saveBtn.addClass("saveBtn saveBtn i:hover");
+    hour.addClass("hour col-sm-1");
+    description.addClass("description col-sm-10");
+    saveBtn.addClass("saveBtn col-sm-1");
+    row.addClass("row time-block");
     hour.attr("timeAttribute", timeValuesObj[i].value);
-    timeBlock.attr("blockAttribute", timeValuesObj[i].value);
+    description.attr("descriptionAttribute", timeValuesObj[i].value);
     saveBtn.attr("buttonAttribute", timeValuesObj[i].value);
     hour.text(timeValuesObj[i].display);
-    timeBlock.text(timeValuesObj[i].display);
+    description.text(timeValuesObj[i].display);
     saveBtn.text(timeValuesObj[i].display);
-    $("#hour").append(hour);
-    $("#timeBlock").append(timeBlock);
-    $("#saveBtn").append(saveBtn);
+    row.append(hour);
+    row.append(description);
+    row.append(saveBtn);
+    $(".container").append(row);
+    // add in icon for the save button.  look for a class from font awesome website.  Will be an I tag (icon).  Will
 
     //Adding a test block of code for time
     if (parseInt(testTime) === parseInt(timeValuesObj[i].value)) {
       console.log(timeValuesObj[i].display);
-      timeBlock.addClass("present");
+      description.addClass("present");
     } else if (parseInt(testTime) > parseInt(timeValuesObj[i].value)) {
-      timeBlock.addClass("past");
+      description.addClass("past");
     } else {
-      timeBlock.addClass("future");
+      description.addClass("future");
     }
     //Below will be the final block of code
     // if (parseInt(currentTime) === parseInt(timeValuesObj[i].value)) {
     //   console.log(timeValuesObj[i].display);
-    //   hour.addClass("present");
+    //   description.addClass("present");
     // } else if (parseInt(currentTime) < parseInt(timeValuesObj[i].value)) {
-    //   hour.addClass("past");
+    //   description.addClass("past");
     // } else {
-    //   hour.addClass("future");
+    //   description.addClass("future");
     // }
   }
 
