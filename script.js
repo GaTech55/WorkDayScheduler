@@ -88,7 +88,7 @@ $(document).ready(function () {
     if (parseInt(currentTime) === parseInt(timeValuesObj[i].value)) {
       console.log(timeValuesObj[i].display);
       description.addClass("present");
-    } else if (parseInt(currentTime) < parseInt(timeValuesObj[i].value)) {
+    } else if (parseInt(currentTime) > parseInt(timeValuesObj[i].value)) {
       description.addClass("past");
     } else {
       description.addClass("future");
