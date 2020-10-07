@@ -4,7 +4,7 @@ $(document).ready(function () {
   var currentDay = moment().format("dddd, MMMM Do");
   // Variable created to capture 24 hour time.  This was achieved by using HH.
   var currentTime = moment().format("HH");
-  var testTime = "14";
+  var testTime = "13";
   console.log(currentTime);
   // Array created to store objects that contain time information
   var timeValuesObj = [
@@ -46,6 +46,7 @@ $(document).ready(function () {
     },
   ];
 
+  //   FOR LOOP
   for (var i = 0; i < timeValuesObj.length; i++) {
     var row = $("<div>");
     var hour = $("<div>");
@@ -56,7 +57,7 @@ $(document).ready(function () {
     row.addClass("row time-block");
     hour.addClass("hour col-sm-1");
     description.addClass("description col-sm-10");
-    saveBtn.addClass("saveBtn col-sm-1 fas fa-save");
+    saveBtn.addClass("saveBtn col-sm-1 fas fa-save fa-lg");
 
     hour.attr("timeAttribute", timeValuesObj[i].display);
     hour.attr("id", "timeAttr-" + timeValuesObj[i].value);
@@ -64,10 +65,11 @@ $(document).ready(function () {
     description.attr("id", "textArea-" + timeValuesObj[i].value);
     saveBtn.attr("id", "saveBtn-" + timeValuesObj[i].value);
     console.log(saveBtn.attr("id"));
+    console.log("Description ID is: " + description.attr("id"));
 
     hour.text(timeValuesObj[i].display);
     // description.text(timeValuesObj[i].display);
-    description.text("");
+    // description.text("");
     // saveBtn.text(timeValuesObj[i].display);
 
     row.append(hour);
@@ -94,15 +96,88 @@ $(document).ready(function () {
     // } else {
     //   description.addClass("future");
     // }
+
     // Do a get item to bring it back into the webpage
   }
 
+  //   FUNCTIONS
+
+  //   Provide the date at the top of the page
   $("#currentDay").append(currentDay);
 
+  // On click functions to store the values
   $("#saveBtn-09").on("click", function () {
+    // When clicked the time and text are stored in local storage.
     var timeValue = $("#timeAttr-09").attr("timeAttribute");
     var textValue = $("#textArea-09").val().trim();
-
+    // update the DOM
     localStorage.setItem(timeValue, textValue);
   });
+  $("#saveBtn-10").on("click", function () {
+    // When clicked the time and text are stored in local storage.
+    var timeValue = $("#timeAttr-10").attr("timeAttribute");
+    var textValue = $("#textArea-10").val().trim();
+    // update the DOM
+    localStorage.setItem(timeValue, textValue);
+  });
+  $("#saveBtn-11").on("click", function () {
+    // When clicked the time and text are stored in local storage.
+    var timeValue = $("#timeAttr-11").attr("timeAttribute");
+    var textValue = $("#textArea-11").val().trim();
+    // update the DOM
+    localStorage.setItem(timeValue, textValue);
+  });
+  $("#saveBtn-12").on("click", function () {
+    // When clicked the time and text are stored in local storage.
+    var timeValue = $("#timeAttr-12").attr("timeAttribute");
+    var textValue = $("#textArea-12").val().trim();
+    // update the DOM
+    localStorage.setItem(timeValue, textValue);
+  });
+  $("#saveBtn-13").on("click", function () {
+    // When clicked the time and text are stored in local storage.
+    var timeValue = $("#timeAttr-13").attr("timeAttribute");
+    var textValue = $("#textArea-13").val().trim();
+    // update the DOM
+    localStorage.setItem(timeValue, textValue);
+  });
+  $("#saveBtn-14").on("click", function () {
+    // When clicked the time and text are stored in local storage.
+    var timeValue = $("#timeAttr-14").attr("timeAttribute");
+    var textValue = $("#textArea-14").val().trim();
+    // update the DOM
+    localStorage.setItem(timeValue, textValue);
+  });
+  $("#saveBtn-15").on("click", function () {
+    // When clicked the time and text are stored in local storage.
+    var timeValue = $("#timeAttr-15").attr("timeAttribute");
+    var textValue = $("#textArea-15").val().trim();
+    // update the DOM
+    localStorage.setItem(timeValue, textValue);
+  });
+  $("#saveBtn-16").on("click", function () {
+    // When clicked the time and text are stored in local storage.
+    var timeValue = $("#timeAttr-16").attr("timeAttribute");
+    var textValue = $("#textArea-16").val().trim();
+    // update the DOM
+    localStorage.setItem(timeValue, textValue);
+  });
+  $("#saveBtn-17").on("click", function () {
+    // When clicked the time and text are stored in local storage.
+    var timeValue = $("#timeAttr-17").attr("timeAttribute");
+    var textValue = $("#textArea-17").val().trim();
+    // update the DOM
+    localStorage.setItem(timeValue, textValue);
+  });
+
+  // jQuery to pull the stored values back into the page
+  $("#textArea-09").val(localStorage.getItem("9AM"));
+  $("#textArea-10").val(localStorage.getItem("10AM"));
+  $("#textArea-11").val(localStorage.getItem("11AM"));
+  $("#textArea-12").val(localStorage.getItem("12PM"));
+  $("#textArea-13").val(localStorage.getItem("1PM"));
+  $("#textArea-14").val(localStorage.getItem("2PM"));
+  $("#textArea-15").val(localStorage.getItem("3PM"));
+  $("#textArea-16").val(localStorage.getItem("4PM"));
+  $("#textArea-17").val(localStorage.getItem("5PM"));
 });
