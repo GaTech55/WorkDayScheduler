@@ -1,14 +1,13 @@
 $(document).ready(function () {
-  console.log("Hello World");
+  //   console.log("Hello World");
+  //   Bringing in the time in the needed format
   var currentDay = moment().format("dddd, MMMM Do");
+  // Variable created to capture 24 hour time.  This was achieved by using HH.
   var currentTime = moment().format("HH");
-  var testTime = "13";
+  var testTime = "14";
   console.log(currentTime);
+  // Array created to store objects that contain time information
   var timeValuesObj = [
-    {
-      display: "2AM",
-      value: "02",
-    },
     {
       display: "9AM",
       value: "09",
@@ -52,16 +51,25 @@ $(document).ready(function () {
     var hour = $("<div>");
     var description = $("<textarea>");
     var saveBtn = $("<button>");
+
+    // Adding classes into the recently created elements
+    row.addClass("row time-block");
     hour.addClass("hour col-sm-1");
     description.addClass("description col-sm-10");
-    saveBtn.addClass("saveBtn col-sm-1");
-    row.addClass("row time-block");
-    hour.attr("timeAttribute", timeValuesObj[i].value);
+    saveBtn.addClass("saveBtn col-sm-1 fas fa-save");
+
+    hour.attr("timeAttribute", timeValuesObj[i].display);
+    hour.attr("id", "timeAttr-" + timeValuesObj[i].value);
     description.attr("descriptionAttribute", timeValuesObj[i].value);
-    saveBtn.attr("buttonAttribute", timeValuesObj[i].value);
+    description.attr("id", "textArea-" + timeValuesObj[i].value);
+    saveBtn.attr("id", "saveBtn-" + timeValuesObj[i].value);
+    console.log(saveBtn.attr("id"));
+
     hour.text(timeValuesObj[i].display);
-    description.text(timeValuesObj[i].display);
-    saveBtn.text(timeValuesObj[i].display);
+    // description.text(timeValuesObj[i].display);
+    description.text("");
+    // saveBtn.text(timeValuesObj[i].display);
+
     row.append(hour);
     row.append(description);
     row.append(saveBtn);
@@ -86,7 +94,15 @@ $(document).ready(function () {
     // } else {
     //   description.addClass("future");
     // }
+    // Do a get item to bring it back into the webpage
   }
 
   $("#currentDay").append(currentDay);
+
+  $("#saveBtn-09").on("click", function () {
+    var timeValue = $("#timeAttr-09").attr("timeAttribute");
+    var textValue = $("#textArea-09").val().trim();
+
+    localStorage.setItem(timeValue, textValue);
+  });
 });
